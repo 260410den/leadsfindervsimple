@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f4f7fb">
+    <title>Lead Finder</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="container">
+        <header class="page-header">
+            <span class="eyebrow">PENCARIAN DATA BISNIS</span>
+            <h1>Lead Finder</h1>
+            <p>Temukan satu nomor telepon/WhatsApp dan pantau tampilan websitenya.</p>
+        </header>
+
+        <section class="search-card" aria-labelledby="search-title">
+            <h2 id="search-title">Masukkan link website</h2>
+            <form id="search-form">
+                <label class="visually-hidden" for="url-input">URL website</label>
+                <input type="text" id="url-input" name="url" placeholder="contoh: perusahaan.co.id" autocomplete="url" required>
+                <button id="btn-cari" type="submit">Cari data</button>
+            </form>
+            <p class="hint">Boleh tanpa http:// atau https://. Nomor dari gambar memerlukan Tesseract OCR.</p>
+        </section>
+
+        <section class="workspace" aria-label="Hasil dan pratinjau website">
+            <section class="results-card" aria-labelledby="results-title">
+                <div class="results-heading">
+                    <h2 id="results-title">Nomor telepon</h2>
+                    <span id="result-count" class="result-count">0 hasil</span>
+                </div>
+                <p id="status-message" class="status-message" role="status" aria-live="polite" tabindex="-1">Masukkan link website untuk mulai mencari.</p>
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th scope="col">Nomor telepon / WhatsApp</th></tr></thead>
+                        <tbody id="result-body"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="preview-card" aria-labelledby="preview-title">
+                <div class="preview-heading">
+                    <div><h2 id="preview-title">Pratinjau website</h2><p id="preview-domain">Website akan tampil di sini</p></div>
+                    <div class="preview-actions">
+                        <a id="open-instagram" href="#" target="_blank" rel="noopener noreferrer" aria-keyshortcuts="I" hidden>Buka Instagram untuk verifikasi</a>
+                        <a id="open-site" href="#" target="_blank" rel="noopener noreferrer" aria-keyshortcuts="O" hidden>Buka website di browser</a>
+                    </div>
+                </div>
+                <div class="browser-frame">
+                    <div class="browser-bar" aria-hidden="true"><span></span><span></span><span></span><div>Pratinjau aman</div></div>
+                    <iframe id="site-preview" title="Pratinjau live website" loading="lazy" referrerpolicy="no-referrer"></iframe>
+                    <p id="preview-hint" class="preview-hint">Pratinjau live. Jika situs menolak tampilan di panel, buka website di browser.</p>
+                </div>
+            </section>
+        </section>
+        <p class="keyboard-help"><kbd>I</kbd> buka Instagram <span>·</span> <kbd>O</kbd> buka website <span>·</span> <kbd>C</kbd> salin nomor <small>(saat fokus bukan di kolom URL)</small></p>
+        <footer>Gunakan data secara bertanggung jawab dan patuhi ketentuan website sumber. Status aktif WhatsApp tidak dapat dijamin hanya dari nomor yang tampil.</footer>
+    </main>
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</body>
+</html>
